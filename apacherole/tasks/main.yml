@@ -1,0 +1,7 @@
+---
+# tasks file for apacherole
+- name: install httpd
+  yum: name=httpd state=present
+
+- name: starting httpd
+  service: name=httpd state=started

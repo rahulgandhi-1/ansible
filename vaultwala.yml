@@ -1,0 +1,26 @@
+- name: secret example
+  hosts: localhost
+  become: true
+  connection: local
+  vars_files:
+     - mypass.txt
+  tasks: 
+     - name: install mysql
+       dnf: name=mariadb105-server state=present
+     - name: start mysql
+       service: name=mariadb state=started
+     - name: print password
+       debug:
+         var: username
+         var: password
+     - name: login mysql
+       mysql_user:
+              login_host: localhost
+              login_password: password
+              login_user: usrname
+              user: root
+              password: password
+              login_unix_socket: /var/lib/mysql/mysql.sock
+              check_implicit_admin: yes
+              update_password: always
+

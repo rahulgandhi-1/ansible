@@ -1,0 +1,13 @@
+- name: three tier
+  hosts: all
+  become: true
+  tasks:
+    - name: install nginx
+      dnf: name=nginx state=present
+      when: inventory_hostname in groups ['webtier']
+    - name: install php
+      apt: name=php8.1 state=present
+      when: inventory_hostname in groups ['apptier']
+    - name: install database
+      apt: name=mysql-server state=present
+      when: inventory_hostname in groups ['dbtier']

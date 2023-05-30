@@ -1,0 +1,11 @@
+---
+# tasks file for phprole
+
+- name: install php
+  yum: name=php8.1 state=present
+
+- name: install php-fpm
+  yum: name=php8.1-fpm state=present
+
+- name: start php-fpm
+  service: name=php-fpm state=started

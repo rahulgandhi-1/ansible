@@ -1,0 +1,17 @@
+- name : filewalademo
+  hosts: 127.0.0.1
+  connection: local
+  become: true
+  vars:
+    - mypath: /home/ec2-user/sample.txt
+    - dirpath: /home/ec2-user/myfolder
+  tasks:
+     - name: create file
+       file:
+          path: "{{mypath}}"
+          state: touch
+     - name: create file
+       file:
+          path: "{{dirpath}}"
+          state: directory
+
