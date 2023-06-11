@@ -1,0 +1,9 @@
+- name: Deploy file to Ubuntu instance
+  hosts: ubuntu
+  become: true
+
+  tasks:
+    - name: Copy file to remote instance
+      copy:
+        src: /home/ec2-user/artifact.jar
+        dest: /home/ubuntu/
